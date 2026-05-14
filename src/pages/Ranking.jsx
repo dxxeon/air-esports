@@ -66,7 +66,7 @@ function Ranking() {
     };
 
     return (
-        <div>
+        <div className="background">
             {/* <Header showRecord /> */}
             <div className="safearea"></div>
             <div className="box">

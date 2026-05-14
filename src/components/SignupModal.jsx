@@ -14,7 +14,7 @@ function SignupModal({ close }) {
     const [studentId, setStudentId] = useState("");
     const [password, setPassword] = useState("");
     const [passwordCheck, setPasswordCheck] = useState("");
-    
+
     const [isNicknameDuplicate, setIsNicknameDuplicate] = useState(false);
 
     useEffect(() => {
@@ -59,7 +59,9 @@ function SignupModal({ close }) {
         <div className="modal-overlay" onClick={close}>
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
                 <div>
-                    <h2 className="title">회원가입</h2>
+                    <div style={{display: "flex", justifyContent: "space-between",}}><h2 className="title">회원가입</h2> <p onClick={close} style={{padding: "2px 5px 0 0", cursor: "pointer"}}>x</p></div>
+                    
+
                     <hr className="divider" />
                     <p style={{ fontSize: "12px", color: "#919191", marginBottom: "15px" }}>
                         입력하신 정보는 <strong>랭킹 중복 등록 방지, 우승 상품 수령자 식별</strong>을 위해 활용되며 행사가 끝난 후 전부 폐기됩니다.
@@ -69,7 +71,7 @@ function SignupModal({ close }) {
                         alignItems: "center",
                         width: "100%", padding: "10px",
                     }}>
-                        <p className="subtitle">성함</p>
+                        <div style={{display: "flex", alignItems: "center"}}><p className="subtitle">성함</p> <p style={{ marginLeft: "10px", color: "#c885ff", fontSize: "10px" }}>★</p></div>
                         <input className="input-right"
                             placeholder="성함"
                             value={name}
@@ -82,7 +84,7 @@ function SignupModal({ close }) {
                         width: "100%", padding: "10px",
                     }}>
                         <div>
-                            <p className="subtitle">닉네임</p>
+                            <div style={{display: "flex", alignItems: "center"}}><p className="subtitle">닉네임</p> <p style={{ marginLeft: "10px", color: "#c885ff", fontSize: "10px" }}>★</p></div>
                             <p className="sub-explain">랭킹에 표시되는 닉네임</p>
                         </div>
                         <input className="input-right"
@@ -93,10 +95,10 @@ function SignupModal({ close }) {
                         />
                     </div>
                     {isNicknameDuplicate && (
-                        <p style={{ color: "red", fontSize: "10px", paddingLeft: "10px", marginTop: "-10px"}}>이미 사용 중인 닉네임입니다.</p>
+                        <p style={{ color: "red", fontSize: "10px", paddingLeft: "10px", marginTop: "-10px" }}>이미 사용 중인 닉네임입니다.</p>
                     )}
                     <div style={{ padding: "10px", }}>
-                        <p className="subtitle">학과(전공)</p>
+                        <div style={{display: "flex", alignItems: "center"}}><p className="subtitle">학과(전공)</p> <p style={{ marginLeft: "10px", color: "#c885ff", fontSize: "10px" }}>★</p></div>
                         <select
                             value={department}
                             onChange={(e) => setDepartment(e.target.value)}
@@ -117,7 +119,7 @@ function SignupModal({ close }) {
                         width: "100%", padding: "10px",
                     }}>
                         <div>
-                            <p className="subtitle">학번 7자리</p>
+                            <div style={{display: "flex", alignItems: "center"}}><p className="subtitle">학번 7자리</p> <p style={{ marginLeft: "10px", color: "#c885ff", fontSize: "10px" }}>★</p></div>
                             <p className="sub-explain">로그인 시 아이디로 사용</p>
                         </div>
                         <input className="input-right"
@@ -133,7 +135,7 @@ function SignupModal({ close }) {
                     </div>
 
                     <div style={{ padding: "10px", }}>
-                        <p className="subtitle" style={{ paddingBottom: "10px" }}>비밀번호 4~10자리</p>
+                        <div style={{display: "flex", paddingBottom: "10px", alignItems: "center"}}><p className="subtitle">비밀번호 4~10자리</p> <p style={{ marginLeft: "10px", color: "#c885ff", fontSize: "10px" }}>★</p></div>
                         <input className="input-full" style={{ width: "100%", marginBottom: "7px" }}
                             type="password"
                             placeholder="비밀번호"

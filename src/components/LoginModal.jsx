@@ -22,7 +22,7 @@ function LoginModal({ close }) {
     return (
         <div className="modal-overlay" onClick={close}>
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                <h2 className="title">로그인</h2>
+                <div style={{display: "flex", justifyContent: "space-between",}}><h2 className="title">로그인</h2> <p onClick={close} style={{padding: "2px 5px 0 0", cursor: "pointer"}}>x</p></div>
                 <hr className="divider" />
                 <div style={{ padding: "0 10px", }}>
                     <p className="subtitle" style={{ fontFamily: "PC-bold", padding: "8px 0" }}>학번 입력</p>
