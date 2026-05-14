@@ -96,10 +96,10 @@ body {
   border-color: black;
 }
 
-.background {
+/* .background {
   /* width: 100%;
   max-width: 390px;
-  min-height: 100vh; */
+  min-height: 100vh;
   background-image: url("../assets/bg.png");
   background-size: cover;
   background-position: center;
@@ -107,6 +107,7 @@ body {
   position: relative;
   overflow: hidden;
 }
+*/
 
 .box {
   min-width: 340px;
