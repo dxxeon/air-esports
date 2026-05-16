@@ -97,7 +97,17 @@ function UploadScore() {
 
         <div style={{ padding: "10px 3px", }}>
           <p className="subtitle" style={{ marginBottom: "2px", paddingLeft: "2px" }}>결과 화면 사진을 첨부해 주세요</p>
-          <p className="sub-explain" style={{ marginBottom: "7px", paddingLeft: "2px" }}>이아이와 함께 찍은 사진만 인정됩니다.</p>
+
+          {/* <p className="sub-explain" style={{ marginBottom: "7px", paddingLeft: "2px" }}>이아이와 함께 찍은 사진만 인정됩니다.</p> */}
+          <p className="sub-explain" style={{ whiteSpace: "pre-wrap", marginBottom:"7px", paddingLeft: "2px" }}>
+            {game === "사과게임" &&
+            `원격 참여자 : 점수 화면과 시간대가 함께 촬영/캡처된 사진
+                        (인스타그램 공지글 참고)
+라운지 참여자 : 점수 화면과 이아이가 함께 찍힌 사진`}
+            {game === "눈빛보내기" && "최종 점수 화면과 이아이가 함께 찍힌 사진만 인정됩니다."}
+            {!game && "종목을 먼저 선택하시면 상세 안내가 표시됩니다."}
+          </p>
+
           <input
             id="file-upload"
             type="file"
@@ -111,14 +121,14 @@ function UploadScore() {
             }}
           />
           <label htmlFor="file-upload" className="input-full"
-          style={{width:"100%", display: "flex", padding: "4px 10px"}}>
+            style={{ width: "100%", display: "flex", padding: "4px 10px" }}>
             {image ? image.name : "이미지를 선택하려면 클릭하세요."}
           </label>
         </div>
 
 
         <button className="btn-lg"
-        style={{display: "block", margin: "80px auto 20px auto"}} onClick={handleUpload} disabled={isUploading}>
+          style={{ display: "block", margin: "80px auto 20px auto" }} onClick={handleUpload} disabled={isUploading}>
           {isUploading ? "업로드 중..." : "업로드"}
         </button>
       </div>

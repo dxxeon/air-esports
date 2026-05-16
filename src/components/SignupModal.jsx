@@ -89,7 +89,7 @@ function SignupModal({ close }) {
                         </div>
                         <input className="input-right"
                             placeholder="닉네임"
-                            maxLength={10}
+                            maxLength={8}
                             value={nickname}
                             onChange={(e) => setNickname(e.target.value)}
                         />
@@ -106,7 +106,7 @@ function SignupModal({ close }) {
                             <option value="">학과 선택</option>
                             <option>데이터사이언스전공</option>
                             <option>사이버보안학과</option>
-                            <option>인공지능학과</option>
+                            <option>인공지능전공</option>
                             <option>인공지능데이터사이언스학부</option>
                             <option>컴퓨터공학과</option>
                         </select>

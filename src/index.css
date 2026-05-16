@@ -37,8 +37,9 @@
   width: 100%;
   max-width: 430px;
   height: 100vh;
+  height: 100dvh;
   position: relative;
-  overflow-y: auto;
+  overflow-y: hidden;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
@@ -59,7 +60,7 @@ body {
 }
 
 .safearea {
-  margin-top: 110px;
+  margin-top: 60px;
 }
 
 .modal-overlay {
