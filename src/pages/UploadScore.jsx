@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LogoutButton from "../components/LogoutButton";
-
+import Footer from "../components/Footer";
 import { uploadScore } from "../api/api";
 import { deleteApp } from "firebase/app";
 
@@ -62,12 +62,12 @@ function UploadScore() {
             <p className="player-depart"> {user.department} </p>
           </div>
           <div className="btn-list">
-            <button className="btn-sm"
+            <button className="btn-sm btn-purple"
               onClick={() => navigate("/ranking")}
             >
               전체 랭킹 보기
             </button>
-            <button className="btn-sm"
+            <button className="btn-sm btn-purple"
               onClick={() => navigate("/my-record")}
             >
               내 기록 보기
@@ -102,10 +102,9 @@ function UploadScore() {
           <p className="sub-explain" style={{ whiteSpace: "pre-wrap", marginBottom:"7px", paddingLeft: "2px" }}>
             {game === "사과게임" &&
             `원격 참여자 : 점수 화면과 시간대가 함께 촬영/캡처된 사진
-                        (인스타그램 공지글 참고)
 라운지 참여자 : 점수 화면과 이아이가 함께 찍힌 사진`}
             {game === "눈빛보내기" && "최종 점수 화면과 이아이가 함께 찍힌 사진만 인정됩니다."}
-            {!game && "종목을 먼저 선택하시면 상세 안내가 표시됩니다."}
+            {!game && ""}
           </p>
 
           <input
@@ -128,7 +127,7 @@ function UploadScore() {
 
 
         <button className="btn-lg"
-          style={{ display: "block", margin: "80px auto 20px auto" }} onClick={handleUpload} disabled={isUploading}>
+          style={{ display: "block", margin: "50px auto 15px auto" }} onClick={handleUpload} disabled={isUploading}>
           {isUploading ? "업로드 중..." : "업로드"}
         </button>
       </div>
@@ -136,6 +135,7 @@ function UploadScore() {
       <div className="logout-wrapper">
         <LogoutButton />
       </div>
+      <Footer />
     </div>
 
   );

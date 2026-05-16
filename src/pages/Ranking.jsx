@@ -4,6 +4,7 @@ import { getRankings } from "../api/api";
 import { getUser } from "../utils/auth";
 import { useNavigate } from "react-router-dom";
 import LogoutButton from "../components/LogoutButton";
+import Footer from "../components/Footer";
 
 function Ranking() {
     const [game, setGame] = useState("사과게임");
@@ -18,7 +19,6 @@ function Ranking() {
         const fetchAll = async () => {
             setIsLoading(true);
             try {
-                // 두 데이터를 병렬로 호출해서 속도 최적화
                 const [apple, eyes] = await Promise.all([
                     getRankings("사과게임"),
                     getRankings("눈빛보내기")
@@ -116,12 +116,12 @@ function Ranking() {
                         <p className="player-depart"> {user?.department} </p>
                     </div>
                     <div className="btn-list">
-                        <button className="btn-sm"
+                        <button className="btn-sm btn-purple"
                             onClick={() => navigate("/my-record")}
                         >
                             내 기록 보기
                         </button>
-                        <button className="btn-sm"
+                        <button className="btn-sm btn-green"
                             onClick={() => navigate("/upload")}
                         >
                             점수 업로드
@@ -145,27 +145,28 @@ function Ranking() {
 
             <div className="box" style={{ marginTop: "15px", maxHeight: "360px" }}>
                 <h2 className="title" style={{ marginBottom: "5px" }}>실시간 랭킹</h2>
-                <div className="tab-group" style={{ display: "flex", marginBottom: "10px", }}>
+                <div className="tab-group" style={{ display: "flex", marginBottom: "5px", }}>
                     <button
-                        className={`tab-btn ${game === "사과게임" ? "active" : ""}`}
+                        className={`tab-btn ${game === "사과게임" ? "active-apple" : ""}`}
                         onClick={() => setGame("사과게임")}
                         style={{ borderRadius: "0 0 0 10px" }}
                     >
-                        사과게임
+                        사과게임 🍎
                     </button>
                     <button
-                        className={`tab-btn ${game === "눈빛보내기" ? "active" : ""}`}
+                        className={`tab-btn ${game === "눈빛보내기" ? "active-eyes" : ""}`}
                         onClick={() => setGame("눈빛보내기")}
                         style={{ borderRadius: "0 0 10px 0" }}
                     >
-                        눈빛보내기
+                        눈빛보내기 💘
                     </button>
                 </div>
 
                 {isLoading ? (
                     <p style={{ textAlign: "center", padding: "20px" }}>랭킹 불러오는 중...</p>
                 ) : (
-                <table className="ranking-table" style={{ borderCollapse: "separate", borderSpacing: "0 0" }}>
+                    <div className="table-wrapper">
+                        <table className="ranking-table" style={{ borderCollapse: "separate", borderSpacing: "0 0" }}>
                     <colgroup>
                         <col style={{ width: "35px" }} />
                         <col style={{ width: "115px" }} />
@@ -192,12 +193,14 @@ function Ranking() {
                         ))}
                     </tbody>
                 </table>
+                </div>
                 )}
             </div>
 
             <div className="logout-wrapper">
                 <LogoutButton />
             </div>
+            <Footer />
 
         </div>
     );

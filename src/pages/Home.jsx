@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import LoginModal from "../components/LoginModal";
 import SignupModal from "../components/SignupModal";
+import Footer from "../components/Footer";
 
 function Home() {
   const [loginOpen, setLoginOpen] = useState(false);
@@ -12,11 +13,11 @@ function Home() {
       <h1 style={{marginTop: "270px",fontFamily: "PCP-bold", fontSize: "22px"}}>26-1 인공지능대학</h1>
       <h1 style={{marginBottom: "80px", fontFamily: "PCP-bold", fontSize: "36px"}}>e스포츠 대회</h1>
 
-      <button style={{marginBottom: "10px"}} className="btn-lg" onClick={() => setLoginOpen(true)}>
+      <button style={{marginBottom: "10px",}} className="btn-home" onClick={() => setLoginOpen(true)}>
         로그인
       </button>
 
-      <button className="btn-lg" onClick={() => setSignupOpen(true)}>
+      <button className="btn-home" onClick={() => setSignupOpen(true)}>
         회원가입
       </button>
 
@@ -31,7 +32,9 @@ function Home() {
           close={() => setSignupOpen(false)}
         />
       )}
+      <Footer />
     </div>
+
   );
 }
 

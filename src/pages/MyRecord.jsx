@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getUser } from "../utils/auth";
 import LogoutButton from "../components/LogoutButton";
-
+import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
 import { getMyRecords } from "../api/api";
 
@@ -55,12 +55,12 @@ function MyRecord() {
                         <p className="player-depart"> {user.department} </p>
                     </div>
                     <div className="btn-list">
-                        <button className="btn-sm"
+                        <button className="btn-sm btn-purple"
                             onClick={() => navigate("/ranking")}
                         >
                             전체 랭킹 보기
                         </button>
-                        <button className="btn-sm"
+                        <button className="btn-sm btn-green"
                             onClick={() => navigate("/upload")}
                         >
                             점수 업로드
@@ -69,9 +69,10 @@ function MyRecord() {
                 </div>
                 <hr className="divider" />
 
-                <div>
-
-
+                <div style={{
+                    maxHeight: "370px", overflowY: "auto",
+                    width: "100%"
+                }}>
                     {records.map((item, index) => {
                         const formattedScore = () => {
                             if (item.game.includes("사과")) {
@@ -127,6 +128,7 @@ function MyRecord() {
             <div className="logout-wrapper">
                 <LogoutButton />
             </div>
+            <Footer />
         </div>
     );
 }
