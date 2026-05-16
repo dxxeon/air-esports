@@ -102,7 +102,8 @@ function UploadScore() {
           <p className="sub-explain" style={{ whiteSpace: "pre-wrap", marginBottom:"7px", paddingLeft: "2px" }}>
             {game === "사과게임" &&
             `원격 참여자 : 점수 화면과 시간대가 함께 촬영/캡처된 사진
-라운지 참여자 : 점수 화면과 이아이가 함께 찍힌 사진`}
+라운지 참여자 : 점수 화면과 이아이가 함께 찍힌 사진
+모바일 앱의 경우 클래식 버전만 인정됩니다.`}
             {game === "눈빛보내기" && "최종 점수 화면과 이아이가 함께 찍힌 사진만 인정됩니다."}
             {!game && ""}
           </p>
