@@ -149,7 +149,7 @@ function RummikubHome() {
                     <h3 className="title" style={{ fontSize: "20px" }}>학과별 참가자 수</h3>
                     {/* ★ 관리자일 때만 [참가자 관리] 버튼이 뚫립니다 */}
                     {isAdmin && (
-                        <button className="btn-sm" onClick={() => navigate("/admin/players")}>
+                        <button className="btn-sm btn-purple" onClick={() => navigate("/admin/players")}>
                             참가자 관리
                         </button>
                     )}
@@ -173,25 +173,25 @@ function RummikubHome() {
                     <h3 className="title" style={{ fontSize: "20px" }}>실시간 랭킹</h3>
                     {/* ★ 관리자일 때만 [점수 입력] 버튼이 뚫립니다 */}
                     {isAdmin && (
-                        <button className="btn-sm" onClick={() => navigate("/admin/score-input")}>
+                        <button className="btn-sm btn-purple" onClick={() => navigate("/admin/score-input")}>
                             점수 입력
                         </button>
                     )}
                 </div>
                 
                 {/* 탭 버튼 영역 */}
-                <div style={{ display: "flex", width: "100%", marginTop: "15px" }}>
+                <div className="tab-group" style={{ display: "flex", margin: "5px 0",}}>
                     <button 
                         className={`tab-btn ${activeTab === "personal" ? "active" : ""}`}
                         onClick={() => setActiveTab("personal")}
-                        style={{ borderRadius: "10px 0 0 0" }}
+                        style={{ borderRadius: "0 0 0 10px" }}
                     >
                         개인 순위
                     </button>
                     <button 
                         className={`tab-btn ${activeTab === "dept" ? "active" : ""}`}
                         onClick={() => setActiveTab("dept")}
-                        style={{ borderRadius: "0 10px 0 0" }}
+                        style={{ borderRadius: "0 0 10px 0" }}
                     >
                         학과별 순위
                     </button>

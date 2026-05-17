@@ -14,35 +14,39 @@ function RummikubTable({ type, data }) {
     const isPersonal = type === "personal";
 
     return (
-        <div className="table-wrapper" style={{ maxHeight: "150px", overflowY: "auto", width: "100%" }}>
-            <table className="ranking-table" style={{ width: "100%", borderCollapse: "collapse", tableLayout: "fixed" }}>
+        <div className="table-wrapper"
+        >
+            <table className="ranking-table"
+            style={{ borderCollapse: "separate", borderSpacing: "0 0"}}
+            >
                 <colgroup>
-                    <col style={{ width: "45px" }} />
+                    <col style={{ width: "35px" }} />
                     <col style={{ width: "115px" }} />
-                    {isPersonal && <col style={{ width: "65px" }} />}
-                    <col style={{ width: "75px" }} />
+                    {isPersonal && <col style={{ width: "50px" }} />}
+                    <col style={{ width: "65px" }} />
                 </colgroup>
                 <thead>
                     <tr>
-                        <th style={{ position: "sticky", top: 0, backgroundColor: "white", zIndex: 1, padding: "8px 0", fontSize: "14px", color: "#6f6f6f", fontFamily: 'PC-bold' }}>순위</th>
-                        <th style={{ position: "sticky", top: 0, backgroundColor: "white", zIndex: 1, padding: "8px 0", fontSize: "14px", color: "#6f6f6f", fontFamily: 'PC-bold' }}>{isPersonal ? "닉네임" : "학과"}</th>
-                        {isPersonal && <th style={{ position: "sticky", top: 0, backgroundColor: "white", zIndex: 1, padding: "8px 0", fontSize: "14px", color: "#6f6f6f", fontFamily: 'PC-bold' }}>학과</th>}
-                        <th style={{ position: "sticky", top: 0, backgroundColor: "white", zIndex: 1, padding: "8px 0", fontSize: "14px", color: "#6f6f6f", fontFamily: 'PC-bold' }}>점수</th>
+                        <th>순위</th>
+                        <th>{isPersonal ? "닉네임" : "학과"}</th>
+                        {isPersonal && <th>학과</th>}
+                        <th>점수</th>
                     </tr>
                 </thead>
+
                 <tbody style={{ textAlign: "center" }}>
                     {data.map((row, index) => (
                         <tr key={index} style={{ borderBottom: "1px solid #f0f0f0" }}>
-                            <td style={{ fontFamily: 'PCP-bold', fontSize: "18px", padding: "8px 0", color: "#000" }}>{index + 1}</td>
-                            <td style={{ padding: "8px 0", fontSize: "14px", color: "#000" }}>
+                            <td style={{ fontFamily: 'PCP-bold', fontSize: "18px" }}>{index + 1}</td>
+                            <td >
                                 {isPersonal ? row.nickname : (deptMap[row.department] || row.department)}
                             </td>
                             {isPersonal && (
-                                <td style={{ padding: "8px 0", fontSize: "14px", color: "#000" }}>
+                                <td >
                                     {deptMap[row.department] || row.department}
                                 </td>
                             )}
-                            <td style={{ padding: "8px 0", fontSize: "14px", color: "#000", fontWeight: "bold" }}>
+                            <td>
                                 {isPersonal ? `${row.score}점` : `${row.averageScore}점`}
                             </td>
                         </tr>

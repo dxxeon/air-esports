@@ -133,6 +133,7 @@ function AdminScoreInput() {
                 
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <h3 className="title" style={{ fontSize: "22px" }}>점수 입력</h3>
+                    <p onClick={() => navigate("/rummikub")} style={{padding: "0 5px 0 0", cursor: "pointer"}}>x</p>
                 </div>
                 <hr className="divider" />
 

@@ -299,6 +299,18 @@ select {
   font-family: 'PC-regular';
 }
 
+.tab-btn.active {
+  background-color: #C0F7C1;
+  border-bottom: 0.4px solid #242424;
+  border-right: transparent;
+  padding: 2px;
+  text-align: center;
+  color: #242424;
+  font-size: 13px;
+  text-align: center;
+  font-family: 'PC-regular';
+}
+
 .tab-btn.active-apple {
   background-color: #FF6F6F;
   border-bottom: 0.4px solid #242424;

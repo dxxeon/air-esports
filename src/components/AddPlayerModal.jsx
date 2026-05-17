@@ -45,7 +45,7 @@ function AddPlayerModal({ close, onAdded }) {
                         className="input-right"
                         placeholder="닉네임 입력"
                         value={nickname}
-                        maxLength={8}
+                        maxLength={10}
                         onChange={(e) => setNickname(e.target.value)}
                         style={{ width: "130px" }}
                     />

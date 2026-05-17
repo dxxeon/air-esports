@@ -93,7 +93,7 @@ function AdminPlayers() {
 
                 {/* 추가하기 버튼 */}
                 <button 
-                    className="btn-sm" 
+                    className="btn-sm btn-green" 
                     onClick={() => setIsModalOpen(true)}
                     style={{ display: "block", margin: "15px auto 0 auto", width: "110px", padding: "5px 0" }}
                 >

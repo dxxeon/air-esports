@@ -13,7 +13,8 @@ function RummikubFooter() {
     const currentPath = location.pathname;
 
     return (
-        <div>
+        <div
+        style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
             {/* 1. 공통: 루미큐브 메인 홈으로 가기 버튼 (현재 홈이 아닐 때만 노출) */}
             {currentPath !== "/rummikub" && (
                 <button 
@@ -34,10 +35,10 @@ function RummikubFooter() {
                     background: "none", 
                     border: "none", 
                     color: "#868686", 
-                    fontSize: "13px", 
+                    fontSize: "12px", 
                     cursor: "pointer", 
                     fontFamily: "PC-regular",
-                    marginTop: "10px",
+                    marginTop: "50px",
                     textDecoration: "underline"
                 }}
             >
