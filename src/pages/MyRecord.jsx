@@ -4,6 +4,7 @@ import LogoutButton from "../components/LogoutButton";
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
 import { getMyRecords } from "../api/api";
+import RummikubFooter from "../components/RummikubFooter";
 
 function MyRecord() {
     const [records, setRecords] = useState([]);
@@ -128,6 +129,7 @@ function MyRecord() {
             <div className="logout-wrapper">
                 <LogoutButton />
             </div>
+            <RummikubFooter />
             <Footer />
         </div>
     );

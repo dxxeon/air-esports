@@ -4,6 +4,7 @@ import LogoutButton from "../components/LogoutButton";
 import Footer from "../components/Footer";
 import { uploadScore } from "../api/api";
 import { deleteApp } from "firebase/app";
+import RummikubFooter from "../components/RummikubFooter";
 
 function UploadScore() {
   const navigate = useNavigate();
@@ -136,6 +137,7 @@ function UploadScore() {
       <div className="logout-wrapper">
         <LogoutButton />
       </div>
+      <RummikubFooter />
       <Footer />
     </div>
 

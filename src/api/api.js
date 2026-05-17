@@ -9,7 +9,8 @@ import {
   getDocs, 
   query, 
   where, 
-  orderBy 
+  orderBy,
+  serverTimestamp 
 } from "firebase/firestore";
 
 const GAS_URL = "https://script.google.com/macros/s/AKfycbyFJe-CHycTeR-plggv-WKN_aGvTz_Vk3_K0Ip3ZpJzymnkSIY4PI2lNk2Z_rFjmxnq/exec";
@@ -36,7 +37,15 @@ export const login = async (studentId, password) => {
     throw new Error("정보가 일치하지 않습니다.");
   }
 
-  return { success: true, user: userSnap.data() };
+  //admin
+  const userData = userSnap.data();
+
+  return { success: true,
+    user: {
+      ...userData,
+      role: userData.role || "user"
+    }
+   };
 };
 
 // 3. 내 기록 가져오기 (Firestore 전용)
@@ -113,4 +122,90 @@ export const getRankings = async (gameName) => {
     console.error("Ranking fetch error:", error);
     return [];
   }
+};
+
+//루미큐브
+/**
+ * 1. 루미큐브 전체 참가자 명단 가져오기
+ * 관리자 페이지(학과별 탭) 및 홈 화면의 학과별 참가자 수 카운트에 사용됩니다.
+ */
+export const getRummikubPlayers = async () => {
+    try {
+        const q = query(collection(db, "rummikubPlayers"), orderBy("createdAt", "desc"));
+        const querySnapshot = await getDocs(q);
+        
+        // 각 문서의 id와 데이터를 묶어서 배열로 반환
+        return querySnapshot.docs.map(doc => ({
+            id: doc.id,
+            ...doc.data()
+        }));
+    } catch (err) {
+        console.error("루미큐브 참가자 명단 로드 실패:", err);
+        throw err;
+    }
+};
+
+/**
+ * 2. 루미큐브 신규 참가자 추가하기
+ * 관리자가 직접 닉네임과 학과를 지정하여 참가자를 등록합니다.
+ */
+export const addRummikubPlayer = async (playerData) => {
+    try {
+        // playerData 예시: { nickname: "김이화", department: "컴퓨터공학과" }
+        const docRef = await addDoc(collection(db, "rummikubPlayers"), {
+            ...playerData,
+            createdAt: serverTimestamp() // 파이어베이스 서버 시간 기준 등록
+        });
+        return docRef.id;
+    } catch (err) {
+        console.error("루미큐브 참가자 등록 실패:", err);
+        throw err;
+    }
+};
+
+/**
+ * 3. 루미큐브 조별 경기 점수 입력(업로드)하기
+ * 관리자가 조를 선택하고 4명의 점수 및 불참 여부를 한 번에 저장합니다.
+ */
+export const uploadRummikubScores = async (scoreData) => {
+    try {
+        /*
+          scoreData 예시:
+          {
+            gameGroup: "1일차 2게임 - B조",
+            players: [
+              { nickname: "김이화", department: "컴퓨터공학과", score: 80, isAttended: true },
+              { nickname: "이컴공", department: "컴퓨터공학과", score: 0, isAttended: false }, // 불참
+              ... 총 4명
+            ]
+          }
+        */
+        const docRef = await addDoc(collection(db, "rummikubScores"), {
+            ...scoreData,
+            timestamp: serverTimestamp()
+        });
+        return docRef.id;
+    } catch (err) {
+        console.error("루미큐브 점수 데이터 업로드 실패:", err);
+        throw err;
+    }
+};
+
+/**
+ * 4. 저장된 모든 루미큐브 경기 결과 점수 가져오기
+ * 홈 화면에서 개인 실시간 랭킹 및 학과별 평균 점수 랭킹을 정렬할 때 사용됩니다.
+ */
+export const getRummikubScores = async () => {
+    try {
+        const q = query(collection(db, "rummikubScores"), orderBy("timestamp", "desc"));
+        const querySnapshot = await getDocs(q);
+        
+        return querySnapshot.docs.map(doc => ({
+            id: doc.id,
+            ...doc.data()
+        }));
+    } catch (err) {
+        console.error("루미큐브 경기 점수 로드 실패:", err);
+        throw err;
+    }
 };

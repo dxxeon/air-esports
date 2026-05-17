@@ -5,6 +5,7 @@ import { getUser } from "../utils/auth";
 import { useNavigate } from "react-router-dom";
 import LogoutButton from "../components/LogoutButton";
 import Footer from "../components/Footer";
+import RummikubFooter from "../components/RummikubFooter";
 
 function Ranking() {
     const [game, setGame] = useState("사과게임");
@@ -200,6 +201,7 @@ function Ranking() {
             <div className="logout-wrapper">
                 <LogoutButton />
             </div>
+            <RummikubFooter />
             <Footer />
 
         </div>

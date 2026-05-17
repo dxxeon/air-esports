@@ -62,7 +62,8 @@
 
 body {
   font-family: 'PC-regular';
-  width: 100%; height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .safearea {
@@ -208,6 +209,35 @@ select {
   align-items: center;
 }
 
+.rummi-btn {
+  /* 💡 CSS 파일 안에서는 값에 따옴표("")를 절대 붙이지 않습니다! */
+  position: fixed;
+  bottom: 55px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  
+  /* 💡 버튼 안에 이미지가 예쁘게 꽉 차도록 크기 조절 (원하는 크기로 px를 조절해보세요) */
+  width: 38px; 
+  height:67px;
+  
+  z-index: 9999;
+  padding-right: 0;
+  
+  /* 💡 대문자 URL ➡️ 소문자 url로 교정하고 배경 설정 확장 */
+  background-image: url('./assets/rummi.png');
+  background-size: contain;     /* 이미지가 잘리지 않고 버튼 안에 쏙 들어오게 */
+  background-position: center;   /* 이미지 가운데 정렬 */
+  background-repeat: no-repeat;  /* 이미지 바둑판 정렬 방지 */
+  
+  /* 💡 버튼 고유의 회색 배경과 테두리를 투명하게 깎아내는 마법의 코드 */
+  background-color: transparent; 
+  border: none;
+  cursor: pointer;               /* 마우스 올렸을 때 손가락 모양 바꾸기 */
+}
+
+
 .btn-lg {
   background-color: #ECE0FF;
   min-width: 167px;
@@ -304,7 +334,7 @@ select {
   table-layout: fixed;
 }
 
-.ranking-table th, 
+.ranking-table th,
 .ranking-table td {
   text-align: center;
   vertical-align: middle;
@@ -315,7 +345,8 @@ select {
   font-size: 16px;
   font-family: 'PC-bold';
   position: sticky;
-  top: 0; z-index: 1;
+  top: 0;
+  z-index: 1;
   background-color: white;
 
 }
