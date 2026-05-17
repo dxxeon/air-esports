@@ -10,7 +10,7 @@ function Home() {
 
   return (
     <div className="background" style={{display: "flex", flexDirection: "column", alignItems: "center", }}>
-      <h1 style={{marginTop: "270px",fontFamily: "PCP-bold", fontSize: "22px"}}>26-1 인공지능대학</h1>
+      <h1 style={{marginTop: "240px",fontFamily: "PCP-bold", fontSize: "22px"}}>26-1 인공지능대학</h1>
       <h1 style={{marginBottom: "80px", fontFamily: "PCP-bold", fontSize: "36px"}}>e스포츠 대회</h1>
 
       <button style={{marginBottom: "10px",}} className="btn-home" onClick={() => setLoginOpen(true)}>
