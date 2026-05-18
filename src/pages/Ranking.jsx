@@ -9,7 +9,7 @@ import RummikubFooter from "../components/RummikubFooter";
 
 function Ranking() {
     const [game, setGame] = useState("사과게임");
-    const [allData, setAllData] = useState({"사과게임":[],"눈빛보내기":[]});
+    const [allData, setAllData] = useState({ "사과게임": [], "눈빛보내기": [] });
     const [isLoading, setIsLoading] = useState(true);
     // const [myRanks, setMyRanks] = useState({ apple: "-", eyes: "-" });
     // const [rankings, setRankings] = useState([]);
@@ -24,7 +24,7 @@ function Ranking() {
                     getRankings("사과게임"),
                     getRankings("눈빛보내기")
                 ]);
-                
+
                 setAllData({
                     "사과게임": apple,
                     "눈빛보내기": eyes
@@ -74,7 +74,7 @@ function Ranking() {
     // const myRank = myRankIndex !== -1 ? myRankIndex + 1 : "-";
 
     const currentRankings = allData[game] || [];
-    
+
     const getMyRank = (gameType) => {
         const data = allData[gameType];
         const index = data.findIndex((r) => r.nickname === user?.nickname);
@@ -145,7 +145,22 @@ function Ranking() {
             </div>
 
             <div className="box" style={{ marginTop: "15px", maxHeight: "360px" }}>
-                <h2 className="title" style={{ marginBottom: "5px" }}>실시간 랭킹</h2>
+            
+                <div style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center"
+                }}>
+                    <h2 className="title" style={{ marginBottom: "5px" }}>실시간 랭킹</h2>
+                    <button
+                        className="btn-cheer"
+                        style={{marginBottom: "5px",}}
+                        onClick={() => navigate("/cheer-list")}
+                    >
+                        우리 과 응원하기
+                    </button>
+                </div>
+
                 <div className="tab-group" style={{ display: "flex", marginBottom: "5px", }}>
                     <button
                         className={`tab-btn ${game === "사과게임" ? "active-apple" : ""}`}
@@ -168,33 +183,33 @@ function Ranking() {
                 ) : (
                     <div className="table-wrapper">
                         <table className="ranking-table" style={{ borderCollapse: "separate", borderSpacing: "0 0" }}>
-                    <colgroup>
-                        <col style={{ width: "35px" }} />
-                        <col style={{ width: "115px" }} />
-                        <col style={{ width: "50px" }} />
-                        <col style={{ width: "65px" }} />
-                    </colgroup>
-                    <thead>
-                        <tr>
-                            <th>순위</th>
-                            <th>닉네임</th>
-                            <th>학과</th>
-                            <th>점수</th>
-                        </tr>
-                    </thead>
+                            <colgroup>
+                                <col style={{ width: "35px" }} />
+                                <col style={{ width: "115px" }} />
+                                <col style={{ width: "50px" }} />
+                                <col style={{ width: "65px" }} />
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>순위</th>
+                                    <th>닉네임</th>
+                                    <th>학과</th>
+                                    <th>점수</th>
+                                </tr>
+                            </thead>
 
-                    <tbody style={{ textAlign: "center" }}>
-                        {currentRankings.map((row, index) => (
-                            <tr key={index}>
-                                <td style={{ fontFamily: 'PCP-bold', fontSize: "18px" }}>{index + 1}</td>
-                                <td>{row.nickname}</td>
-                                <td>{deptMap[row.department] || row.department}</td>
-                                <td>{formatScore(row.score, game)}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-                </div>
+                            <tbody style={{ textAlign: "center" }}>
+                                {currentRankings.map((row, index) => (
+                                    <tr key={index}>
+                                        <td style={{ fontFamily: 'PCP-bold', fontSize: "18px" }}>{index + 1}</td>
+                                        <td>{row.nickname}</td>
+                                        <td>{deptMap[row.department] || row.department}</td>
+                                        <td>{formatScore(row.score, game)}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
                 )}
             </div>
 

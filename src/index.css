@@ -275,6 +275,20 @@ select {
   border-radius: 20px;
 }
 
+.btn-cheer {
+  /* background-color: #d9d9d9; */
+  /* min-width:94px; */
+  color: black;
+  border-color: transparent;
+  background: none;
+  border-color: transparent;
+  text-decoration: underline;
+  font-family: 'PCP-light';
+  font-size: 12px;
+  padding: 0;
+  /* border-radius: 20px; */
+}
+
 .btn-green {
   background-color: #C0F7C1;
 }

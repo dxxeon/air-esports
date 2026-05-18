@@ -209,3 +209,31 @@ export const getRummikubScores = async () => {
         throw err;
     }
 };
+
+// 1. 응원 메시지 등록하기
+export const uploadCheerMessage = async (department, message) => {
+  try {
+    await addDoc(collection(db, "rummikubCheers"), {
+      department,
+      message,
+      timestamp: serverTimestamp() // 최신순 정렬을 위한 시간 기록
+    });
+    return { success: true };
+  } catch (err) {
+    throw new Error(err.message);
+  }
+};
+
+// 2. 응원 메시지 전체 가져오기
+export const getCheerMessages = async () => {
+  try {
+    const q = query(collection(db, "rummikubCheers"), orderBy("timestamp", "desc"));
+    const querySnapshot = await getDocs(q);
+    return querySnapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    }));
+  } catch (err) {
+    throw new Error(err.message);
+  }
+};

@@ -4,6 +4,8 @@ import Home from "./pages/Home";
 import Ranking from "./pages/Ranking";
 import MyRecord from "./pages/MyRecord";
 import UploadScore from "./pages/UploadScore";
+import CheerList from "./pages/CheerList";
+import CheerUpload from "./pages/CheerUpload";
 
 //루미큐브
 import RummikubHome from "./pages/RummikubHome";
@@ -25,6 +27,10 @@ function App() {
             <Route path="/rummikub" element={<RummikubHome />} />
             <Route path="/admin/players" element={<AdminPlayers />} />
             <Route path="/admin/score-input" element={<AdminScoreInput />} />
+
+            {/* 응원메시지 */}
+            <Route path="/cheer-list" element={<CheerList />} />
+            <Route path="/cheer-upload" element={<CheerUpload />} />
           </Routes>
         </BrowserRouter>
       </div>
